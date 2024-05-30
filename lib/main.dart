@@ -21,7 +21,7 @@ class MyWidget extends StatelessWidget {
             if (index < movies.length) {
               return Container();
             } else {
-              return  Container();
+              return  const LoadingIndicator();
             }
           },
         ),
