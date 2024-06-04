@@ -1,28 +1,48 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 main(){
   runApp(const MyWidget());
 }
 
-class MyWidget extends StatelessWidget {
+class MyWidget extends StatefulWidget {
   const MyWidget({super.key});
 
-  
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+
+  initState(){
+    loadData();
+    super.initState();
+  }
+
+  loadData()async{
+    final String response= await rootBundle.loadString("lib/data.json");
+    final List<dynamic> data = json.decode(response); 
+    return data.map((element) => MyItem.fromJson(element)).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
     List<MyItem> movies=[];
     return  MaterialApp(
       home: Scaffold(
-        body: VerticalListView( 
-          itemCount: movies.length + 1,
-          itemBuilder: (context, index) {
-            if (index < movies.length) {
-              return Container();
-            } else {
-              return  const LoadingIndicator();
-            }
-          },
+        body: Center(
+          child: VerticalListView( 
+            itemCount: movies.length + 1,
+            itemBuilder: (context, index) {
+              if (index < movies.length) {
+                return Container();
+              } else {
+                return  const LoadingIndicator();
+              }
+            },
+          ),
         ),
       ),
     );
@@ -30,7 +50,24 @@ class MyWidget extends StatelessWidget {
 }
 
 class MyItem{
-  late String title;
+    String? backdropUrl;
+  String? title;
+  String? releaseDate;
+    MyItem(
+    {
+      this.backdropUrl,
+      this.title,
+      this.releaseDate,
+    }
+  );
+
+    factory MyItem.fromJson(Map<String, dynamic> json) {
+    return MyItem(
+      title: json['title'],
+      backdropUrl: json['backdrop_path'],
+      releaseDate: json['release_date'],
+    );
+  }
 
 }
 
