@@ -37,7 +37,7 @@ class _MyWidgetState extends State<MyWidget> {
             itemCount: movies.length + 1,
             itemBuilder: (context, index) {
               if (index < movies.length) {
-                return Container();
+                return VerticalListViewCard(media: movies[index]);
               } else {
                 return  const LoadingIndicator();
               }
@@ -127,3 +127,95 @@ class LoadingIndicator extends StatelessWidget {
   }
 }
 
+
+
+class VerticalListViewCard extends StatelessWidget {
+  const VerticalListViewCard({
+    super.key,
+    required this.media,
+  });
+
+  final MyItem media;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return GestureDetector(
+      onTap: () {
+        
+      },
+      child: Container(
+        height: 175,
+        decoration: BoxDecoration(
+          color: Color(0xff272b30),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: ImageWithShimmer(
+                  imageUrl: media.posterUrl,
+                  width: 110,
+                  height: double.infinity,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 6),
+                    child: Text(
+                      media.title,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: textTheme.titleSmall,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      if (media.releaseDate.isNotEmpty) ...[
+                        Padding(
+                          padding: const EdgeInsets.only(right: 12),
+                          child: Text(
+                            media.releaseDate.split(', ')[1],
+                            textAlign: TextAlign.center,
+                            style: textTheme.bodyLarge,
+                          ),
+                        ),
+                      ],
+                      const Icon(
+                        Icons.star_rate_rounded,
+                        color: Color(0xffffbe21),
+                        size: 18,
+                      ),
+                      Text(
+                        media.voteAverage.toString(),
+                        style: textTheme.bodyLarge,
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 14),
+                    child: Text(
+                      media.overview,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: textTheme.bodyLarge,
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
