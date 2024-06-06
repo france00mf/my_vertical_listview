@@ -50,22 +50,28 @@ class _MyWidgetState extends State<MyWidget> {
 }
 
 class MyItem{
-    String? backdropUrl;
+    String? posterPath;
   String? title;
   String? releaseDate;
+  double? voteAverage;
+  String? overview;
     MyItem(
     {
-      this.backdropUrl,
+      this.posterPath,
       this.title,
       this.releaseDate,
+      this.voteAverage,
+      this.overview
     }
   );
 
     factory MyItem.fromJson(Map<String, dynamic> json) {
     return MyItem(
       title: json['title'],
-      backdropUrl: json['backdrop_path'],
+      posterPath: json['poster_path'],
       releaseDate: json['release_date'],
+      voteAverage: json["vote_average"],
+      overview: json["overview"]
     );
   }
 
@@ -158,7 +164,7 @@ class VerticalListViewCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: ImageWithShimmer(
-                  imageUrl: media.posterUrl,
+                  imageUrl: media.posterPath!,
                   width: 110,
                   height: double.infinity,
                 ),
@@ -172,7 +178,7 @@ class VerticalListViewCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 6),
                     child: Text(
-                      media.title,
+                      media.title!,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: textTheme.titleSmall,
@@ -180,11 +186,11 @@ class VerticalListViewCard extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      if (media.releaseDate.isNotEmpty) ...[
+                      if (media.releaseDate!.isNotEmpty) ...[
                         Padding(
                           padding: const EdgeInsets.only(right: 12),
                           child: Text(
-                            media.releaseDate.split(', ')[1],
+                            media.releaseDate!.split(', ')[1],
                             textAlign: TextAlign.center,
                             style: textTheme.bodyLarge,
                           ),
@@ -204,7 +210,7 @@ class VerticalListViewCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 14),
                     child: Text(
-                      media.overview,
+                      media.overview!,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: textTheme.bodyLarge,

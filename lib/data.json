@@ -1,7 +1,7 @@
 [
     {
         "adult": false,
-        "backdrop_path": "/fqv8v6AycXKsivp1T5yKtLbGXce.jpg",
+        "backdrop_path": "fqv8v6AycXKsivp1T5yKtLbGXce.jpg",
         "genre_ids": [
             878,
             12,
@@ -12,7 +12,7 @@
         "original_title": "Kingdom of the Planet of the Apes",
         "overview": "Several generations in the future following Caesar's reign, apes are now the dominant species and live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all that he has known about the past and to make choices that will define a future for apes and humans alike.",
         "popularity": 7860.171,
-        "poster_path": "/gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
+        "poster_path": "4woSOUD0equAYzvwhWBHIJDCM88.jpg",
         "release_date": "2024-05-08",
         "title": "Kingdom of the Planet of the Apes",
         "video": false,
@@ -21,7 +21,7 @@
     },
     {
         "adult": false,
-        "backdrop_path": "/z121dSTR7PY9KxKuvwiIFSYW8cf.jpg",
+        "backdrop_path": "z121dSTR7PY9KxKuvwiIFSYW8cf.jpg",
         "genre_ids": [
             10752,
             28,
@@ -32,7 +32,7 @@
         "original_title": "Civil War",
         "overview": "In the near future, a group of war journalists attempt to survive while reporting the truth as the United States stands on the brink of civil war.",
         "popularity": 3573.779,
-        "poster_path": "/sh7Rg8Er3tFcN9BpKIPOMvALgZd.jpg",
+        "poster_path": "kYgQzzjNis5jJalYtIHgrom0gOx.jpg",
         "release_date": "2024-04-10",
         "title": "Civil War",
         "video": false,
@@ -41,7 +41,7 @@
     },
     {
         "adult": false,
-        "backdrop_path": "/otfoeC96neoOdA4HqsX06OWuzE9.jpg",
+        "backdrop_path": "otfoeC96neoOdA4HqsX06OWuzE9.jpg",
         "genre_ids": [
             27,
             53
@@ -51,7 +51,7 @@
         "original_title": "Tarot",
         "overview": "When a group of friends recklessly violate the sacred rule of Tarot readings, they unknowingly unleash an unspeakable evil trapped within the cursed cards. One by one, they come face to face with fate and end up in a race against death.",
         "popularity": 2743.428,
-        "poster_path": "/gAEUXC37vl1SnM7PXsHTF23I2vq.jpg",
+        "poster_path": "qrGtVFxaD8c7et0jUtaYhyTzzPg.jpg",
         "release_date": "2024-05-01",
         "title": "Tarot",
         "video": false,
@@ -60,7 +60,7 @@
     },
     {
         "adult": false,
-        "backdrop_path": "/xRd1eJIDe7JHO5u4gtEYwGn5wtf.jpg",
+        "backdrop_path": "xRd1eJIDe7JHO5u4gtEYwGn5wtf.jpg",
         "genre_ids": [
             878,
             28,
@@ -71,11 +71,11 @@
         "original_title": "Godzilla x Kong: The New Empire",
         "overview": "Following their explosive showdown, Godzilla and Kong must reunite against a colossal undiscovered threat hidden within our world, challenging their very existence – and our own.",
         "popularity": 2664.066,
-        "poster_path": "/z1p34vh7dEOnLDmyCrlUVLuoDzd.jpg",
+        "poster_path": "tpiqEVTLRz2Mq7eLq5DT8jSrp71.jpg",
         "release_date": "2024-03-27",
         "title": "Godzilla x Kong: The New Empire",
         "video": false,
         "vote_average": 7.239,
         "vote_count": 2446
-    },
+    }
 ]
