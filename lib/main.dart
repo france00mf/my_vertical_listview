@@ -18,6 +18,7 @@ class MyWidget extends StatefulWidget {
 class _MyWidgetState extends State<MyWidget> {
   late Future<List<MyItem>> movies;
 
+  @override
   initState(){
    movies = loadData();
     super.initState();
@@ -48,7 +49,12 @@ class _MyWidgetState extends State<MyWidget> {
                   return VerticalListView( 
                 itemCount: datasource!.length+1,
                 itemBuilder: (context, index) {
-                  return VerticalListViewCard(media: datasource[index]);
+                  
+                  if(datasource.length>1){
+                      return VerticalListViewCard(media: datasource[index]);
+                  }else{
+                    return Center(child: Text("Error"),);
+                  }
                 },
               );
               }
