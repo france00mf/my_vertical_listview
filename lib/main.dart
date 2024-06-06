@@ -81,8 +81,8 @@ class MyItem{
     return MyItem(
       title: json['title'],
       posterPath: json['poster_path'],
-      releaseDate: json['release_date'],
-      voteAverage: json["vote_average"],
+      releaseDate:getDate( json['release_date']),
+      voteAverage:  json["vote_average"],
       overview: json["overview"]
     );
   }
