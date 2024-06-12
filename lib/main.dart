@@ -17,16 +17,21 @@ class MyWidget extends StatefulWidget {
 
 class _MyWidgetState extends State<MyWidget> {
   late Future<List<MyItem>> movies;
+  late Future<List<MyItem>> filmes;
 
   @override
   initState(){
-   movies = loadData();
-    super.initState();
+  filmes = loadData();
+   super.initState();
   }
 
   Future<List<MyItem>> loadData()async{
     final String response= await rootBundle.loadString("lib/data.json");
     final List<dynamic> data = json.decode(response); 
+    var myData =data.map((e) {
+      print(e.toString());
+      return MyItem.fromJson(e);} );
+     
     return data.map((element) => MyItem.fromJson(element)).toList();
   }
 
@@ -36,30 +41,25 @@ class _MyWidgetState extends State<MyWidget> {
     return  MaterialApp(
       home: Scaffold(
         body: Center(
-          child: FutureBuilder<List<MyItem>>(
-            future: movies,
-            builder: (context, snapshot) {
-              var datasource=snapshot.data;
-              if(snapshot.connectionState == ConnectionState.waiting){
-                return  const LoadingIndicator();
-              }
-              else if(snapshot.hasError){
-                return const Center(child: Text("Erro ao carregar filems"),);
-              }else{
-                  return VerticalListView( 
-                itemCount: datasource!.length+1,
-                itemBuilder: (context, index) {
-                  
-                  if(datasource.length>1){
-                      return VerticalListViewCard(media: datasource[index]);
-                  }else{
-                    return Center(child: Text("Error"),);
-                  }
-                },
-              );
-              }
+          child: Center(
+        child:     FutureBuilder(
+              future: filmes,
+              builder: (context, snapshot) {
+                if(snapshot.connectionState==ConnectionState.waiting){
+                  return const Center(child:CircularProgressIndicator());
+                }else if(snapshot.hasError){
+                  return Center(child: Text("Erro"),);
+                }else{
+                  var data = snapshot.data!;
+                  return VerticalListView(
+                    itemCount: data.length,
+                    itemBuilder: (context,index){
+                      return VerticalListViewCard(media: data[index]);
+                    });
+                }
+              },
             
-            }
+          )
           ),
         ),
       ),
